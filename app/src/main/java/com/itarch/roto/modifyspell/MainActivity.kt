@@ -4,6 +4,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
@@ -41,8 +42,11 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             var text = editText.text.toString()
             val ret : String = mService?.modifySpell(text) ?: "error"
-            val color : Int = mService?.calcColor() ?: 0
+            val color : String = mService?.calcColor() ?: "#000000"
             Log.d(TAG, "Spell:" + ret + ", Color:" + color)
+
+            show.text = ret
+            show.setTextColor(Color.parseColor(color))
         }
 
     }
