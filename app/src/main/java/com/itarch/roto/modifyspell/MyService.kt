@@ -42,10 +42,10 @@ class MyService : Service() {
             val minute = calendar.get(Calendar.MINUTE)
             val second = calendar.get(Calendar.SECOND)
 
-            var now = second + minute * 60 + hour * 60 * 60
-
-            var ret = String.format("%06x",now)
-            Log.d(TAG, "color:" + ret)
+            var no = second + minute * 60 + hour * 60 * 60
+            var now = no * Integer.parseInt("ffffff", 16) / 86400
+            var ret = String.format("%06x", now)
+            Log.d(TAG, "color:" + ret + ", now:" + no)
             //return ret
             return "#" + ret
         }
