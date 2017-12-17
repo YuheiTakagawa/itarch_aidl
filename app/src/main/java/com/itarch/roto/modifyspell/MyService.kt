@@ -4,6 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
+import java.util.*
 
 /**
  * Created by roto on 2017/12/17.
@@ -34,9 +35,19 @@ class MyService : Service() {
             return ret
         }
 
-        override fun calcColor() : Int {
+        override fun calcColor() : String {
             Log.d(TAG, "startCalcColor")
-            return 0
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+            val second = calendar.get(Calendar.SECOND)
+
+            var now = second + minute * 60 + hour * 60 * 60
+
+            var ret = String.format("%06x",now)
+            Log.d(TAG, "color:" + ret)
+            //return ret
+            return "#" + ret
         }
     }
 }
