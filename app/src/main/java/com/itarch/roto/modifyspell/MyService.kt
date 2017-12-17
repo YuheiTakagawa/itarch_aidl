@@ -23,7 +23,15 @@ class MyService : Service() {
     private val mBinder = object : IMyAidlInterface.Stub() {
         override fun modifySpell(text: String) : String {
             Log.d(TAG, "StartModifySpell")
-            return text
+            var ret : String = ""
+            for (c in text) {
+                if(c.isUpperCase())
+                    ret += c.toLowerCase()
+                else
+                    ret += c.toUpperCase()
+            }
+            Log.d(TAG, "ret:" + ret)
+            return ret
         }
 
         override fun calcColor() : Int {
