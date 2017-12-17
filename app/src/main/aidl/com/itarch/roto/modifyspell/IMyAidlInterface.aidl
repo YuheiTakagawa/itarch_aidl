@@ -5,5 +5,5 @@ package com.itarch.roto.modifyspell;
 
 interface IMyAidlInterface {
     String modifySpell(String text);
-    int calcColor();
+    String calcColor();
 }
